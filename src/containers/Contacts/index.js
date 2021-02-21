@@ -168,7 +168,7 @@ export default function Contacts(props) {
 
             {!loading && fetched && contactList.length > 0 && paging(contactList, AMOUNT).map(contactListMapFunc)}
             <div style={{height: 500}} />
-            {!loading && contactList.length > 0 && <div style={{color: "#ababab", verticalAlign: "middle", cursor: "pointer", height: 100,margin: 50,textAlign: "center"}} onClick={more}>Load more</div>}
+            {!loading && contactList.length > 20 && <div style={{color: "#ababab", verticalAlign: "middle", cursor: "pointer", height: 100,margin: 50,textAlign: "center"}} onClick={more}>Load more</div>}
         </Container>
        
     )
