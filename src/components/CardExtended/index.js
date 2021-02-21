@@ -67,6 +67,12 @@ const MainCard = styled.div`
 
     padding: 25px;
 
+
+    @media only screen and (max-width: 400px) {
+        width: 250px;  
+
+    }
+
 `
 const MiniCard = styled.div`
 
@@ -86,7 +92,11 @@ const MiniCard = styled.div`
 
     padding: 25px;
     padding-top: 50px;
+    
+    @media only screen and (max-width: 400px) {
+        width: 250px;  
 
+    }
 `
 
 

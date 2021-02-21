@@ -55,6 +55,12 @@ const Row = styled.div`
     color: #a9aeb5;
 
     transition: color 0.1s ease-in;
+
+
+    >div {
+        word-break: break-all;
+        text-align: center;
+    }
 `
 
 const MainCard = styled.div`
@@ -69,6 +75,11 @@ const MainCard = styled.div`
 
     color:#3d4656;    
     
+    @media only screen and (max-width: 400px) {
+        width: 220px;
+
+       
+    }
  
     
     padding: 25px;
@@ -83,8 +94,13 @@ const MiniCard = styled.div`
     left: 0;
     margin: auto;
     width: 300px;
+    height: 320px;
 
-    height: 300px;
+    @media only screen and (max-width: 400px) {
+        width: 240px;  
+        height: 320px;
+    }
+
     border-radius: 8px;
     box-shadow: 0px 8px 20px rgb(0 0 0 / 3%);
     background: white;
