@@ -47,8 +47,9 @@ const FilterButtons = styled.div`
 
     }
     }
-
-    animation: 0.3s appear-filterbuttons forwards ease-in;
+    ${props => props.hide && `
+        animation: 0.3s appear-filterbuttons forwards ease-in;
+    `}
     position: absolute;
     top: -80px; 
     width: 100%;
@@ -81,6 +82,14 @@ const FilterButtons = styled.div`
 
 const key = i => Math.random().toString(36).substring(2) + "_" + i
 const AMOUNT = 20
+
+
+const LoadingIcon = <div class="sk-folding-cube">
+    <div class="sk-cube1 sk-cube"></div>
+    <div class="sk-cube2 sk-cube"></div>
+    <div class="sk-cube4 sk-cube"></div>
+    <div class="sk-cube3 sk-cube"></div>
+</div>
 
 const getName = val => get(val, ["name", "first"], "") + " " + get(val, ["name", "last"], "")
 
@@ -143,18 +152,18 @@ export default function Contacts(props) {
 
   
     return (
-        <>
+
         <Container>
 
-            {!loading && fetched && contactList.length > 0 && <FilterButtons>
+            <FilterButtons hide={!loading && fetched && contactList.length > 0}>
                 {sort === null && <svg onClick={() => setSort(false)} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="30" height="30"><path fill="none" d="M0 0h24v24H0z"/><path  fill="currentColor" d="M8 4h13v2H8V4zM4.5 6.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm0 7a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm0 6.9a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zM8 11h13v2H8v-2zm0 7h13v2H8v-2z"/></svg>}
                 {sort === false && <svg onClick={() => setSort(true)} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="30" height="30"><path fill="none" d="M0 0H24V24H0z"/><path fill="currentColor" d="M19 3l4 5h-3v12h-2V8h-3l4-5zm-5 15v2H3v-2h11zm0-7v2H3v-2h11zm-2-7v2H3V4h9z"/></svg>}
                 {sort === true && <svg onClick={() => setSort(null)} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="30" height="30"><path fill="none" d="M0 0H24V24H0z"/><path fill="currentColor" d="M20 4v12h3l-4 5-4-5h3V4h2zm-8 14v2H3v-2h9zm2-7v2H3v-2h11zm0-7v2H3V4h11z"/></svg>}
                 <span>sort</span>
-            </FilterButtons> }
+            </FilterButtons>
             <Text>
                 {!loading && nousersfound && <h3 style={{color: "#ababab"}}>No users found</h3>}
-                {(loading || !fetched) && <div className={"loader"}></div>}
+                {(loading && fetched) && <div className={"loader"}></div>}
             </Text>
 
             {!loading && fetched && contactList.length > 0 && paging(contactList, AMOUNT).map(contactListMapFunc)}
@@ -162,7 +171,6 @@ export default function Contacts(props) {
             {!loading && contactList.length > 0 && <div style={{color: "#ababab", verticalAlign: "middle", cursor: "pointer", height: 100,margin: 50,textAlign: "center"}} onClick={more}>Load more</div>}
         </Container>
        
-        </>
     )
 }
 

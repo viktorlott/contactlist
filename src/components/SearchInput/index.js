@@ -25,11 +25,12 @@ const Container = styled.div`
         }
         100% {
             opacity: 1;
-
         }
     }
 
-    animation: 0.3s appear-searchinput forwards ease-in;
+    ${props => !props.hide && `
+        animation: 0.3s appear-searchinput forwards ease-in;
+    `}
 
     color:#3d4656;
     z-index: 100;
@@ -70,47 +71,7 @@ const Icon = styled.div`
 `
 
 
-// const UserListContainer = styled.div`
-//     position: absolute;
-//     top: calc(100% + 10px);
-//     display: ${props => props.hide ? "none" : "flex"};
-//     flex-direction: column;
-//     width: 100%;
-//     border-radius: 8px;
-//     box-shadow: 0px 8px 20px rgb(0 0 0 / 6%);
-//     background: white;
-//     color: #8a8d90;
-//     overflow: scroll;
-//     cursor: pointer;
-//     z-index: 2;
-    
 
-//     max-height: 430px;
-    
-//     >p {
-        
-//         color: #767a84;
-//         color: #a2a5ad;
-//         font-weight: 300;
-//         transition: transform 0.1s ease-in, background 0.1s ease-in, color 0.1s ease-in ;
-//         &:hover {
-//             transform: scale(1.01);
-//             color:#626569;
-//             background: #f4f4f4;
-            
-//         }
-//         position: relative;
-//         padding: 15px 30px;
-//         margin: 5px 0;
-//         >svg {
-//             position: absolute;
-//             right: 20px;
-//             top: 50%;
-//             transform: translateY(-50%);
-//         }
-//     }
-
-// `
 
 
 const Title = styled.div`
@@ -154,7 +115,7 @@ const UserSearchIcon = () => <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 
 
     return (
         <HoverComponent>
-            <Container>
+            <Container hide={props.hide}>
                 <Title></Title>
                 <Icon color="#7b7b7b"><UserSearchIcon /></Icon> <Input placeholder="Search" ref={searchRef} onChange={onChange} /> 
             </Container>

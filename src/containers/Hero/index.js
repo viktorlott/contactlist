@@ -79,12 +79,9 @@ const SearchBar = memo((props)  => {
     const setLoading = useCallback(value => dispatch(contactListSlice.actions.setLoading(value)), [])
     const onChange = useCallback(value => dispatch(contactListSlice.actions.filter(value)), [])
 
-    if(!fetched) {
-        return null
-    }
 
     return (
-        <SearchInput onChange={onChange} onSelect={onSelect} searchResult={searchResult} value={filter} contact={contact} setLoading={setLoading}/>
+        <SearchInput hide={!fetched} onChange={onChange} onSelect={onSelect} searchResult={searchResult} value={filter} contact={contact} setLoading={setLoading}/>
     )
 })
 
