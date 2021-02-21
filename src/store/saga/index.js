@@ -7,7 +7,7 @@ import { fetchContactList } from 'store/actions'
 /**
  * Initialize Saga - Fetch contact list with pre-set gender and amount
  *  
- * Contact list is not optimized for >=200 contacts. I should implement pagenation logic when scrolling
+ * Contact list is not optimized for >=200 contacts. I should implement pagination logic when scrolling
  * 
  */
 function* initializeSaga() {
