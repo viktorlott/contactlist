@@ -23,7 +23,7 @@ const CardContainer = styled.div`
     border-radius: 8px;
     color:#3d4656;    
 
-    margin-bottom: 40px;
+    margin-bottom: 60px;
     height: 340px;
 
 
